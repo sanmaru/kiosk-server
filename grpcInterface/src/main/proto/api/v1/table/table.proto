@@ -1,0 +1,1147 @@
+syntax = "proto3";
+
+package api.v1.table;
+
+option java_package = "com.ibexlab.pos.api.v1.table";
+option java_outer_classname = "TableProto";
+option java_multiple_files = true;
+
+message AllTables {
+  repeated AccountSubject account_subject = 1;
+  repeated BasicDataItem basic_data_item = 2;
+  repeated StoreTerminalBasicData store_terminal_basic_data = 3;
+  repeated StoreTerminalBasicDataItem store_terminal_basic_data_item = 4;
+  repeated I18NTerm i18n_term = 5;
+  repeated EmployeeGroup employee_group = 6;
+  repeated Employee employee = 7;
+  repeated EmployeeAuthority employee_authority = 8;
+  repeated TableDetail table_detail = 9;
+  repeated TableGroup table_group = 10;
+  repeated Table table = 11;
+  repeated BasicData basic_data = 12;
+  repeated StoreTerminal store_terminal = 13;
+  repeated KitchenMemoGroup kitchen_memo_group = 14;
+  repeated KitchenMemo kitchen_memo = 15;
+  repeated ItemGroup item_group = 16;
+  repeated Item item = 17;
+  repeated OptionGroup option_group = 18;
+  repeated OptionEntity option_entity = 19;
+  repeated SetEntity set_entity = 20;
+  repeated ItemOption item_option = 21;
+  repeated MenuGroup menu_group = 22;
+  repeated MenuGroupUse menu_group_use = 23;
+  repeated MenuItem menu_item = 24;
+  repeated Store store = 25;
+  repeated AdminUser admin_user = 26;
+  repeated SelfMenuGroup self_menu_group = 27;
+  repeated SelfMenuItem self_menu_item = 28;
+  repeated TemplateItem template_item = 29;
+  repeated StorePlace store_place = 30;
+  repeated MenuTemplate menu_template = 31;
+}
+
+message SalesAndReportTables {
+  repeated SalesHistory sales_history = 1;
+  repeated SalesHistoryItem sales_history_item = 2;
+  repeated SalesAccountHistory sales_account_history = 3;
+  repeated SalesAccountHistoryDetails sales_account_history_details = 4;
+  repeated SalesAccountHistoryTip sales_account_history_tip = 5;
+  repeated SalesHistoryDiscount sales_history_discount = 6;
+  repeated CashdrawCashInOutHistory cashdraw_cash_in_out_history = 7;
+  repeated CashierBankHistory cashier_bank_history = 8;
+  repeated CashierBankHistoryBill cashier_bank_history_bill = 9;
+  repeated DailyReportHistory daily_report_history = 10;
+  repeated DailyReportHistoryPayments daily_report_history_payments = 11;
+  repeated ApprovalMaster approval_master = 12;
+}
+
+message AccountSubject {
+  string account_subject_id = 1;
+  string i18n_term_id = 2;
+  string account_subject_name = 3;
+  string account_subject_use_type = 4;
+  string account_subject_type = 5;
+  bool fixed_expenses_yn = 6;
+  string remark_a = 7;
+  string remark_b = 8;
+  string remark_c = 9;
+  string remark_d = 10;
+  string remark_e = 11;
+  string user_input = 12;
+  string first_registrant_id = 13;
+  string first_registration_datetime = 14;
+  string last_reviser_id = 15;
+  string last_revision_datetime = 16;
+  string state_code = 17;
+}
+
+message BasicDataItem {
+  string basic_data_item_id = 1;
+  string basic_data_id = 2;
+  string i18n_term_id = 3;
+  int32 basic_data_item_serial_number = 4;
+  string basic_data_item_code_name = 5;
+  string basic_data_item_name = 6;
+  string data1 = 7;
+  string data2 = 8;
+  string data3 = 9;
+  string data4 = 10;
+  string data5 = 11;
+  string data6 = 12;
+  string data7 = 13;
+  string data8 = 14;
+  string data9 = 15;
+  string data10 = 16;
+  string data11 = 17;
+  string data12 = 18;
+  string data13 = 19;
+  string data14 = 20;
+  string data15 = 21;
+  string data16 = 22;
+  string data17 = 23;
+  string data18 = 24;
+  string data19 = 25;
+  string data20 = 26;
+  bool hiding_yn = 27;
+  string first_registrant_id = 28;
+  string first_registration_datetime = 29;
+  string last_reviser_id = 30;
+  string last_revision_datetime = 31;
+  string state_code = 32;
+  string server_last_revision_datetime = 33;
+}
+
+message StoreTerminalBasicData {
+  string store_terminal_basic_data_id = 1;
+  string store_terminal_id = 2;
+  string i18n_term_id = 3;
+  string store_terminal_basic_data_code_name = 4;
+  string store_terminal_basic_data_name = 5;
+  bool hiding_yn = 6;
+  string first_registrant_id = 7;
+  string first_registration_datetime = 8;
+  string last_reviser_id = 9;
+  string last_revision_datetime = 10;
+  string state_code = 11;
+}
+
+message StoreTerminalBasicDataItem {
+  string store_terminal_basic_data_item_id = 1;
+  string store_terminal_basic_data_id = 2;
+  string i18n_term_id = 3;
+  int32 store_terminal_basic_data_item_serial_number = 4;
+  string store_terminal_basic_data_item_code_name = 5;
+  string store_terminal_basic_data_item_name = 6;
+  string data1 = 7;
+  string data2 = 8;
+  string data3 = 9;
+  string data4 = 10;
+  string data5 = 11;
+  string data6 = 12;
+  string data7 = 13;
+  string data8 = 14;
+  string data9 = 15;
+  string data10 = 16;
+  string data11 = 17;
+  string data12 = 18;
+  string data13 = 19;
+  string data14 = 20;
+  string data15 = 21;
+  string data16 = 22;
+  string data17 = 23;
+  string data18 = 24;
+  string data19 = 25;
+  string data20 = 26;
+  bool hiding_yn = 27;
+  string first_registrant_id = 28;
+  string first_registration_datetime = 29;
+  string last_reviser_id = 30;
+  string last_revision_datetime = 31;
+  string state_code = 32;
+  string server_last_revision_datetime = 33;
+}
+
+message I18NTerm {
+  string i18n_term_id = 1;
+  string user_input = 2;
+  string english = 3;
+  string korean = 4;
+  string japanese = 5;
+  string chinese = 6;
+  string german = 7;
+  string spanish = 8;
+  string portuguese = 9;
+  string vietnamese = 10;
+  string french = 11;
+  string russian = 12;
+  string arabic = 13;
+  string thai = 14;
+  string first_registrant_id = 15;
+  string first_registration_datetime = 16;
+  string last_reviser_id = 17;
+  string last_revision_datetime = 18;
+  string state_code = 19;
+  string kazakhstan = 20;
+}
+
+message EmployeeGroup {
+  string employee_group_id = 1;
+  string employee_group_name = 2;
+  bool hiding_yn = 3;
+  string first_registrant_id = 4;
+  string first_registration_datetime = 5;
+  string last_reviser_id = 6;
+  string last_revision_datetime = 7;
+  string state_code = 8;
+}
+
+message Employee {
+  string employee_id = 1;
+  string employee_group_id = 2;
+  string employee_name = 3;
+  string tel_number = 4;
+  string hp_number = 5;
+  string primary_address = 6;
+  string detail_address = 7;
+  string login_password = 8;
+  string employee_description = 9;
+  bool hiding_yn = 10;
+  string first_registrant_id = 11;
+  string first_registration_datetime = 12;
+  string last_reviser_id = 13;
+  string last_revision_datetime = 14;
+  string state_code = 15;
+  int32 employee_code = 16;
+  string data1 = 17;
+  string data2 = 18;
+  string data3 = 19;
+  string admin_user_id = 20;
+}
+
+message EmployeeAuthority {
+  string employee_authority_id = 1;
+  string employee_id = 2;
+  string client_authority_group_code = 3;
+  string first_registrant_id = 4;
+  string first_registration_datetime = 5;
+  string last_reviser_id = 6;
+  string last_revision_datetime = 7;
+  string state_code = 8;
+}
+
+message TableDetail {
+  string table_id = 1;
+  int32 seat_count = 2;
+  bool smoking_possible_yn = 3;
+  bool window_yn = 4;
+  bool booth_yn = 5;
+  bool privacy_protection_yn = 6;
+  string charged_server_id = 7;
+  string first_registrant_id = 8;
+  string first_registration_datetime = 9;
+  string last_reviser_id = 10;
+  string last_revision_datetime = 11;
+  string state_code = 12;
+}
+
+message TableGroup {
+  string table_group_id = 1;
+  string table_group_name = 2;
+  int32 location_x = 3;
+  int32 location_y = 4;
+  int32 location_z = 5;
+  string background_image_name = 6;
+  bool hiding_yn = 7;
+  string first_registrant_id = 8;
+  string first_registration_datetime = 9;
+  string last_reviser_id = 10;
+  string last_revision_datetime = 11;
+  string state_code = 12;
+}
+
+message Table {
+  string table_id = 1;
+  string server_table_id = 2;
+  string table_group_id = 3;
+  string table_name = 4;
+  int32 location_x = 5;
+  int32 location_y = 6;
+  int32 width = 7;
+  int32 height = 8;
+  string table_image_name = 9;
+  bool hiding_yn = 10;
+  string first_registrant_id = 11;
+  string first_registration_datetime = 12;
+  string last_reviser_id = 13;
+  string last_revision_datetime = 14;
+  string state_code = 15;
+}
+
+message BasicData {
+  string basic_data_id = 1;
+  string basic_data_code_name = 2;
+  string basic_data_name = 3;
+  string first_registrant_id = 4;
+  string first_registration_datetime = 5;
+  string last_reviser_id = 6;
+  string last_revision_datetime = 7;
+  string state_code = 8;
+}
+
+message StoreTerminal {
+  string store_terminal_id = 1;
+  string store_id = 2;
+  string terminal_id = 3;
+  string store_terminal_name = 4;
+  string device_unique_value = 5;
+  bool master_terminal_yn = 6;
+  string master_terminal_address = 7;
+  string master_terminal_port = 8;
+  string terminal_role_section_code = 9;
+  bool server_connection_yn = 10;
+  string language_code = 11;
+  string currency_code = 12;
+  string app_action_type_code = 13;
+  bool cashier_auto_login_yn = 14;
+  string installation_location = 15;
+  string store_terminal_description = 16;
+  string data1 = 17;
+  string data2 = 18;
+  string data3 = 19;
+  string first_registrant_id = 20;
+  string first_registration_datetime = 21;
+  string last_reviser_id = 22;
+  string last_revision_datetime = 23;
+  string state_code = 24;
+  string store_terminal_group_id = 25;
+  string server_last_revision_datetime = 26;
+}
+
+message KitchenMemoGroup {
+  string kitchen_memo_group_id = 1;
+  string kitchen_memo_group_name = 2;
+  bool hiding_yn = 3;
+  string first_registrant_id = 4;
+  string first_registration_datetime = 5;
+  string last_reviser_id = 6;
+  string last_revision_datetime = 7;
+  string state_code = 8;
+}
+
+message KitchenMemo {
+  string kitchen_memo_group_id = 1;
+  string kitchen_memo_id = 2;
+  string kitchen_memo_name = 3;
+  string kitchen_memo = 4;
+  bool hiding_yn = 5;
+  string first_registrant_id = 6;
+  string first_registration_datetime = 7;
+  string last_reviser_id = 8;
+  string last_revision_datetime = 9;
+  string state_code = 10;
+  string kitchen_memo_code = 11;
+}
+
+message ItemGroup {
+  string item_group_id = 1;
+  string item_group_name = 2;
+  string item_group_type_code = 3;
+  bool hiding_yn = 4;
+  string first_registrant_id = 5;
+  string first_registration_datetime = 6;
+  string last_reviser_id = 7;
+  string last_revision_datetime = 8;
+  string state_code = 9;
+  string upper_item_group_id = 10;
+  string operation_type_code = 11;
+  string server_last_revision_datetime = 12;
+  string store_id = 13;
+}
+
+message Item {
+  string item_id = 1;
+  string item_group_id = 2;
+  string item_name = 3;
+  string sale_type_code = 4;
+  double cost = 5;
+  double selling_price = 6;
+  bool open_price_yn = 7;
+  string barcode = 8;
+  string apply_tax0_yn = 9;
+  string apply_tax1_yn = 10;
+  string apply_tax2_yn = 11;
+  bool apply_discount_yn = 12;
+  bool hiding_yn = 13;
+  string first_registrant_id = 14;
+  string first_registration_datetime = 15;
+  string last_reviser_id = 16;
+  string last_revision_datetime = 17;
+  string state_code = 18;
+  double inventory_quantity = 19;
+  bool kitchen_printer_output_yn = 20;
+  string price_type_code = 21;
+  string option_use_type_code = 22;
+  bool recommended_item_yn = 23;
+  bool packing_possible_yn = 24;
+  bool online_sale_yn = 25;
+  bool sold_out_yn = 26;
+  string image_url = 27;
+  string operation_type_code = 28;
+  string item_code = 29;
+  string server_last_revision_datetime = 30;
+  string link_code = 31;
+  string link_info = 32;
+  string store_id = 33;
+  string item_unit = 34;
+  double margin_percent = 35;
+  bool is_use_inventory = 36;
+  double unit_count = 37;
+}
+
+message OptionGroup {
+  string option_group_id = 1;
+  string option_group_name = 2;
+  int32 location_x = 3;
+  int32 location_y = 4;
+  int32 location_z = 5;
+  bool required_yn = 6;
+  bool hiding_yn = 7;
+  string first_registrant_id = 8;
+  string first_registration_datetime = 9;
+  string last_reviser_id = 10;
+  string last_revision_datetime = 11;
+  string state_code = 12;
+  string store_id = 13;
+  int32 selection_count = 14;
+}
+
+message OptionEntity {
+  string option_entity_id = 1;
+  string option_group_id = 2;
+  string item_id = 3;
+  int32 option_entity_serial_number = 4;
+  int32 location_x = 5;
+  int32 location_y = 6;
+  int32 location_z = 7;
+  string button_size_type_code = 8;
+  string first_registrant_id = 9;
+  string first_registration_datetime = 10;
+  string last_reviser_id = 11;
+  string last_revision_datetime = 12;
+  string state_code = 13;
+  string store_id = 14;
+}
+
+message SetEntity {
+  string set_entity_id = 1;
+  string set_item_id = 2;
+  string entity_item_id = 3;
+  string set_entity_serial_number = 4;
+  double quantity = 5;
+  string first_registrant_id = 6;
+  string first_registration_datetime = 7;
+  string last_reviser_id = 8;
+  string last_revision_datetime = 9;
+  string state_code = 10;
+  string store_id = 11;
+}
+
+message ItemOption {
+  string item_option_id = 1;
+  string item_id = 2;
+  string option_group_id = 3;
+  int32 item_option_serial_number = 4;
+  string first_registrant_id = 5;
+  string first_registration_datetime = 6;
+  string last_reviser_id = 7;
+  string last_revision_datetime = 8;
+  string state_code = 9;
+  string store_id = 10;
+}
+
+message MenuGroup {
+  string menu_group_id = 1;
+  string menu_group_name = 2;
+  int32 location_x = 3;
+  int32 location_y = 4;
+  int32 location_z = 5;
+  string background_image_name = 6;
+  string background_color = 7;
+  string font_name = 8;
+  double font_size = 9;
+  string font_style = 10;
+  string font_color = 11;
+  bool default_yn = 12;
+  string first_registrant_id = 13;
+  string first_registration_datetime = 14;
+  string last_reviser_id = 15;
+  string last_revision_datetime = 16;
+  string state_code = 17;
+  bool online_sale_yn = 18;
+  string link_information = 19;
+  string menu_template_id = 20;
+}
+
+message MenuGroupUse {
+  string menu_group_id = 1;
+  string business_section_code = 2;
+  bool use_yn = 3;
+  string first_registrant_id = 4;
+  string first_registration_datetime = 5;
+  string last_reviser_id = 6;
+  string last_revision_datetime = 7;
+  string state_code = 8;
+}
+
+message MenuItem {
+  string menu_item_id = 1;
+  string menu_group_id = 2;
+  string item_id = 3;
+  int32 location_x = 4;
+  int32 location_y = 5;
+  int32 location_z = 6;
+  string background_color = 7;
+  string font_color = 8;
+  string button_size_type_code = 9;
+  string first_registrant_id = 10;
+  string first_registration_datetime = 11;
+  string last_reviser_id = 12;
+  string last_revision_datetime = 13;
+  string state_code = 14;
+  string link_information = 15;
+  string server_last_revision_datetime = 16;
+  string data = 17;
+}
+
+message Store {
+  string store_id = 1;
+  string agency_id = 2;
+  string manager_id = 3;
+  string store_name = 4;
+  string zipcode = 5;
+  string primary_address = 6;
+  string detail_address = 7;
+  string tel_number = 8;
+  string hp_number = 9;
+  string fax_number = 10;
+  string business_registration_number = 11;
+  string tax_section_code = 12;
+  string language_code = 13;
+  string currency_code = 14;
+  string store_state_code = 15;
+  string close_business_time = 16;
+  string opening_hours = 17;
+  string closed_days = 18;
+  string parking_type_code = 19;
+  string business_sectors = 20;
+  string main_products = 21;
+  string ceo_name = 22;
+  string owner_name = 23;
+  string data1 = 24;
+  string data2 = 25;
+  string data3 = 26;
+  string first_registrant_id = 27;
+  string first_registration_datetime = 28;
+  string last_reviser_id = 29;
+  string last_revision_datetime = 30;
+  string state_code = 31;
+  string link_type_code = 32;
+  string service_type_code = 33;
+  string server_last_revision_datetime = 34;
+  string store_type = 35;
+  string vat_type = 36;
+  string vat_series = 37;
+  string vat_number = 38;
+  string inventory_type = 39;
+}
+
+message AdminUser {
+  string admin_user_id = 1;
+  string admin_authority_group_id = 2;
+  string affiliated_company_id = 3;
+  string login_id = 4;
+  string login_password = 5;
+  string admin_user_name = 6;
+  string tel_number = 7;
+  string hp_number = 8;
+  string email_address = 9;
+  string primary_address = 10;
+  string detail_address = 11;
+  string admin_account_state_code = 12;
+  string admin_user_description = 13;
+  string first_registrant_id = 14;
+  string first_registration_datetime = 15;
+  string last_reviser_id = 16;
+  string last_revision_datetime = 17;
+  string state_code = 18;
+  string pin = 19;
+}
+
+message SelfMenuGroup {
+  string self_menu_group_id = 1;
+  string self_menu_group_name = 2;
+  int32 location_x = 3;
+  int32 location_y = 4;
+  int32 location_z = 5;
+  string background_image_name = 6;
+  string background_color = 7;
+  string font_name = 8;
+  double font_size = 9;
+  string font_style = 10;
+  string font_color = 11;
+  bool default_yn = 12;
+  string first_registrant_id = 13;
+  string first_registration_datetime = 14;
+  string last_reviser_id = 15;
+  string last_revision_datetime = 16;
+  string state_code = 17;
+}
+
+message SelfMenuItem {
+  string self_menu_item_id = 1;
+  string self_menu_group_id = 2;
+  string item_id = 3;
+  int32 location_x = 4;
+  int32 location_y = 5;
+  int32 location_z = 6;
+  string background_color = 7;
+  string font_color = 8;
+  string button_size_type_code = 9;
+  string first_registrant_id = 10;
+  string first_registration_datetime = 11;
+  string last_reviser_id = 12;
+  string last_revision_datetime = 13;
+  string state_code = 14;
+  string server_last_revision_datetime = 15;
+}
+
+message TemplateItem {
+  string template_item_id = 1;
+  string name = 2;
+  string template = 3;
+  string cut = 4;
+  string is_list_type = 5;
+  string first_registrant_id = 6;
+  string first_registration_datetime = 7;
+  string last_reviser_id = 8;
+  string last_revision_datetime = 9;
+  string state_code = 10;
+  string server_last_revision_datetime = 11;
+}
+
+message StorePlace {
+  string store_place_id = 1;
+  string store_id = 2;
+  string place_type = 3;
+  string is_default = 4;
+  string place_name = 5;
+  string place_short_name = 6;
+  string place_desc = 7;
+  string place_address1 = 8;
+  string place_address2 = 9;
+  string employee_id = 10;
+  string place_tel = 11;
+  string place_timezone = 12;
+  string use_dst = 13;
+  string first_registrant_id = 14;
+  string first_registration_datetime = 15;
+  string last_reviser_id = 16;
+  string last_revision_datetime = 17;
+  string state_code = 18;
+  string server_last_revision_datetime = 19;
+}
+
+message SalesHistory {
+  string common_date = 1;
+  int32 sale_serial_number = 2;
+  string table_id = 3;
+  string order_link = 4;
+  string business_section_code = 5;
+  double supply_value = 6;
+  double supply_amount = 7;
+  double tax_amount0 = 8;
+  double tax_amount1 = 9;
+  double tax_amount2 = 10;
+  double discount_total_amount = 11;
+  double total_amount = 12;
+  bool tax_free_yn = 13;
+  string tax_free_reason = 14;
+  double tip_total_amount = 15;
+  double pre_tip_total_amount = 16;
+  double pre_tip_amount = 17;
+  double pre_tip_tax_amount = 18;
+  double payment_tip_total_amount = 19;
+  double payment_tip_amount = 20;
+  double payment_tip_tax_amount = 21;
+  string serving_employee_id = 22;
+  string order_employee_id = 23;
+  string cancel_link = 24;
+  string cancel_reason = 25;
+  string cancel_type_code = 26;
+  string cancel_employee_id = 27;
+  string close_business_type_code = 28;
+  string memo = 29;
+  bool staff_bank_yn = 30;
+  string first_registrant_id = 31;
+  string first_registration_datetime = 32;
+  string last_reviser_id = 33;
+  string last_revision_datetime = 34;
+  string state_code = 35;
+  string operation_type_code = 36;
+  string server_last_revision_datetime = 37;
+  int32 sales_account_serial_number = 38;
+  int32 item_serial_number = 39;
+  string data0 = 40;
+  string data1 = 41;
+  string data2 = 42;
+  string data3 = 43;
+  string data4 = 44;
+  string data5 = 45;
+  string data6 = 46;
+  string data7 = 47;
+  string data8 = 48;
+  string data9 = 49;
+  string data10 = 50;
+}
+
+message SalesHistoryItem {
+  string common_date = 1;
+  int32 sale_serial_number = 2;
+  int32 item_serial_number = 3;
+  string item_id = 4;
+  double quantity = 5;
+  double price = 6;
+  double supply_value = 7;
+  double supply_amount = 8;
+  double tax_amount0 = 9;
+  double tax_amount1 = 10;
+  double tax_amount2 = 11;
+  string discount_section_code = 12;
+  string discount_type_code = 13;
+  double discount_amount = 14;
+  double order_discount_amount = 15;
+  int32 cancel_serial_number = 16;
+  string cancel_reason = 17;
+  string cancel_employee_id = 18;
+  int32 menu_payment_serial_number = 19;
+  string first_registrant_id = 20;
+  string first_registration_datetime = 21;
+  string last_reviser_id = 22;
+  string last_revision_datetime = 23;
+  string state_code = 24;
+  int32 upper_item_serial_number = 25;
+  string order_option_code = 26;
+  string server_last_revision_datetime = 27;
+  string tracking_info = 28;
+}
+
+message SalesAccountHistory {
+  string common_date = 1;
+  int32 sale_serial_number = 2;
+  int32 sales_account_serial_number = 3;
+  string cashdraw_section_code = 4;
+  string payment_section_code = 5;
+  string cash_receipt_identify_type_code = 6;
+  string cash_receipt_identify_number = 7;
+  string approval_type_code = 8;
+  string cash_receipt_type_code = 9;
+  string payment_approval_number = 10;
+  string approval_date = 11;
+  double supply_value = 12;
+  double tax_amount = 13;
+  double tax_amount1 = 14;
+  double tax_amount2 = 15;
+  string expiry_date = 16;
+  int32 installment_month = 17;
+  string card_name = 18;
+  string card_company_section_code = 19;
+  string card_company_name = 20;
+  string card_company_affiliate_number = 21;
+  string card_purchase_company_code = 22;
+  string card_purchase_company_name = 23;
+  bool card_swip_yn = 24;
+  double pre_tip_total_amount = 25;
+  double pre_tip_amount = 26;
+  double pre_tip_tax_amount = 27;
+  double payment_tip_total_amount = 28;
+  double payment_tip_amount = 29;
+  double payment_tip_tax_amount = 30;
+  double total_amount = 31;
+  string cancel_serial_number = 32;
+  string cancel_employee_id = 33;
+  bool complete_settlement_yn = 34;
+  string receipt_number = 35;
+  string payment_option = 36;
+  double menu_discount_amount = 37;
+  double order_discount_amount = 38;
+  string first_registrant_id = 39;
+  string first_registration_datetime = 40;
+  string last_reviser_id = 41;
+  string last_revision_datetime = 42;
+  string state_code = 43;
+  string approval_date_primary_pattern = 44;
+  string transaction_type_code = 45;
+  bool sale_transmit_yn = 46;
+  string operation_type_code = 47;
+  bool not_in_sales_yn = 48;
+  double taken_amount = 49;
+  double change_amount = 50;
+  string server_last_revision_datetime = 51;
+  string payment_method_code = 52;
+  string approval_transaction_no = 53;
+}
+
+message SalesAccountHistoryDetails {
+  string common_date = 1;
+  int32 sale_serial_number = 2;
+  int32 sales_account_serial_number = 3;
+  string data0 = 4;
+  string data1 = 5;
+  string data2 = 6;
+  string data3 = 7;
+  string data4 = 8;
+  string data5 = 9;
+  string data6 = 10;
+  string data7 = 11;
+  string data8 = 12;
+  string data9 = 13;
+  string first_registrant_id = 14;
+  string first_registration_datetime = 15;
+  string last_reviser_id = 16;
+  string last_revision_datetime = 17;
+  string state_code = 18;
+  string data10 = 19;
+  string data11 = 20;
+  string data12 = 21;
+  string data13 = 22;
+  string data14 = 23;
+  string data15 = 24;
+  string data16 = 25;
+  string data17 = 26;
+  string data18 = 27;
+  string data19 = 28;
+  string data20 = 29;
+  string server_last_revision_datetime = 30;
+}
+
+message SalesAccountHistoryTip {
+  string common_date = 1;
+  int32 sale_serial_number = 2;
+  int32 sales_account_serial_number = 3;
+  string store_terminal_id = 4;
+  string payment_section_code = 5;
+  string approval_type_code = 6;
+  string cashdraw_section_code = 7;
+  double payment_amount = 8;
+  double tax_amount = 9;
+  string tip_receipt_employee_id = 10;
+  string first_registrant_id = 11;
+  string first_registration_datetime = 12;
+  string last_reviser_id = 13;
+  string last_revision_datetime = 14;
+  string state_code = 15;
+  string server_last_revision_datetime = 16;
+}
+
+message SalesHistoryDiscount {
+  string common_date = 1;
+  int32 sale_serial_number = 2;
+  int32 discount_serial_number = 3;
+  string discount_section_code = 4;
+  double discount_rate = 5;
+  double discount_amount = 6;
+  string discount_name = 7;
+  string item_id = 8;
+  string first_registrant_id = 9;
+  string first_registration_datetime = 10;
+  string last_reviser_id = 11;
+  string last_revision_datetime = 12;
+  string state_code = 13;
+  int32 cancel_serial_number = 14;
+  string cancel_employee_id = 15;
+  string server_last_revision_datetime = 16;
+}
+
+message CashdrawCashInOutHistory {
+  string common_date = 1;
+  int32 common_serial_number = 2;
+  string account_subject_id = 3;
+  string cashdraw_section_code = 4;
+  string in_out_type_code = 5;
+  double amount = 6;
+  string remark_a = 7;
+  string remark_b = 8;
+  string remark_c = 9;
+  string personal_account_id = 10;
+  string sales_link = 11;
+  string cashier_bank_link = 12;
+  string first_registrant_id = 13;
+  string first_registration_datetime = 14;
+  string last_reviser_id = 15;
+  string last_revision_datetime = 16;
+  string state_code = 17;
+  string in_out_employee_id = 18;
+  string server_last_revision_datetime = 19;
+}
+
+message CashierBankHistory {
+  string common_date = 1;
+  int32 common_serial_number = 2;
+  string cashdraw_section_code = 3;
+  string business_open_close_section_code = 4;
+  string cashier_type_code = 5;
+  string business_start_datetime = 6;
+  string business_end_datetime = 7;
+  string business_change_datetime = 8;
+  int32 sales_count = 9;
+  double table_turnover_rate = 10;
+  string employee_id = 11;
+  double open_business_cash_total_amount = 12;
+  double close_business_cash_total_amount = 13;
+  double business_change_cash_total_amount = 14;
+  double pos_cash_total_amount = 15;
+  double cash_difference_amount = 16;
+  string cash_difference_reason = 17;
+  double cash_deposit_total_amount = 18;
+  double cash_withdrawal_amount = 19;
+  double sales_total_amount = 20;
+  double discount_total_amount = 21;
+  double tip_total_amount = 22;
+  int32 cancel_serial_number = 23;
+  string shift_serial_number = 24;
+  string first_registrant_id = 25;
+  string first_registration_datetime = 26;
+  string last_reviser_id = 27;
+  string last_revision_datetime = 28;
+  string state_code = 29;
+  double sales_total_cash_amount = 30;
+  string server_last_revision_datetime = 31;
+  int32 batch_id = 32;
+}
+
+message CashierBankHistoryBill {
+  string common_date = 1;
+  int32 common_serial_number = 2;
+  string cashdraw_section_code = 3;
+  string business_open_close_section_code = 4;
+  int32 bill_serial_number = 5;
+  double total_amount = 6;
+  int32 bill0_number = 7;
+  int32 bill1_number = 8;
+  int32 bill2_number = 9;
+  int32 bill3_number = 10;
+  int32 bill4_number = 11;
+  int32 bill5_number = 12;
+  int32 bill6_number = 13;
+  int32 bill7_number = 14;
+  int32 bill8_number = 15;
+  int32 bill9_number = 16;
+  int32 bill10_number = 17;
+  int32 bill11_number = 18;
+  int32 bill12_number = 19;
+  int32 bill13_number = 20;
+  int32 bill14_number = 21;
+  int32 bill15_number = 22;
+  int32 bill16_number = 23;
+  int32 bill17_number = 24;
+  int32 bill18_number = 25;
+  int32 bill19_number = 26;
+  double user_input_amount = 27;
+  int32 cancel_serial_number = 28;
+  string shift_serial_number = 29;
+  string first_registrant_id = 30;
+  string first_registration_datetime = 31;
+  string last_reviser_id = 32;
+  string last_revision_datetime = 33;
+  string state_code = 34;
+  string server_last_revision_datetime = 35;
+}
+
+message DailyReportHistory {
+  string store_terminal_id = 1;
+  string common_date = 2;
+  int32 common_serial_number = 3;
+  string business_datetime = 4;
+  double total_sales_amount = 5;
+  int32 total_sales_count = 6;
+  double total_supply_value = 7;
+  double total_tax_amount = 8;
+  double total_tip_amount = 9;
+  double total_tip_tax_amount = 10;
+  double discount_total_amount = 11;
+  double total_cancel_amount = 12;
+  double total_refund_amount = 13;
+  double pos_cash_total_amount = 14;
+  double cash_deposit_total_amount = 15;
+  double cash_withdrawal_amount = 16;
+  bool synchronized_yn = 17;
+  string first_registrant_id = 18;
+  string first_registration_datetime = 19;
+  string last_reviser_id = 20;
+  string last_revision_datetime = 21;
+  string state_code = 22;
+  string server_last_revision_datetime = 23;
+}
+
+message DailyReportHistoryPayments {
+  string store_terminal_id = 1;
+  string common_date = 2;
+  int32 common_serial_number = 3;
+  string payment_section_code = 4;
+  string business_datetime = 5;
+  double total_sales_amount = 6;
+  int32 total_sales_count = 7;
+  double total_supply_value = 8;
+  double total_tax_amount = 9;
+  double total_tip_amount = 10;
+  double total_tip_tax_amount = 11;
+  double discount_total_amount = 12;
+  double total_cancel_amount = 13;
+  double total_refund_amount = 14;
+  bool synchronized_yn = 15;
+  string first_registrant_id = 16;
+  string first_registration_datetime = 17;
+  string last_reviser_id = 18;
+  string last_revision_datetime = 19;
+  string state_code = 20;
+  string server_last_revision_datetime = 21;
+}
+
+/*
+    주문 동기화
+*/
+
+message OrderHistory {
+  string common_date = 1;
+  int32 common_serial_number = 2;
+  string table_id = 3;
+  string operation_type_code = 4;
+  string business_section_code = 5;
+  double supply_value = 6;
+  double supply_amount = 7;
+  double tax_amount0 = 8;
+  double tax_amount1 = 9;
+  double tax_amount2 = 10;
+  double discount_total_amount = 11;
+  double order_total_amount = 12;
+  bool tax_free_yn = 13;
+  string tax_free_reason = 14;
+  double pre_tip_total_amount = 15;
+  double pre_tip_amount = 16;
+  double pre_tip_tax_amount = 17;
+  double payment_tip_total_amount = 18;
+  double payment_tip_amount = 19;
+  double payment_tip_tax_amount = 20;
+  string serving_employee_id = 21;
+  string order_employee_id = 22;
+  int32 pager_number = 23;
+  string first_registrant_id = 24;
+  string first_registration_datetime = 25;
+  string last_reviser_id = 26;
+  string last_revision_datetime = 27;
+  string state_code = 28;
+  string server_last_revision_datetime = 29;
+  string payment_initiator_id = 30;
+  bool is_finalized = 31;
+  string memo = 32;
+}
+
+message OrderHistoryItem {
+  string common_date = 1;
+  int32 common_serial_number = 2;
+  int32 item_serial_number = 3;
+  int32 upper_item_serial_number = 4;
+  string item_id = 5;
+  string store_terminal_id = 6;
+  double quantity = 7;
+  double price = 8;
+  double supply_value = 9;
+  double tax_amount0 = 10;
+  double tax_amount1 = 11;
+  double tax_amount2 = 12;
+  string discount_section_code = 13;
+  double discount_rate = 14;
+  double discount_amount = 15;
+  string discount_type_code = 16;
+  double menu_discount_amount = 17;
+  double order_discount_amount = 18;
+  double supply_amount = 19;
+  string order_option_code = 20;
+  string order_holding_time = 21;
+  int32 cancel_serial_number = 22;
+  string cancel_employee_id = 23;
+  string cancel_reason = 24;
+  bool menu_payment_yn = 25;
+  int32 menu_payment_serial_number = 26;
+  string first_registrant_id = 27;
+  string first_registration_datetime = 28;
+  string last_reviser_id = 29;
+  string last_revision_datetime = 30;
+  string state_code = 31;
+}
+
+message OrderHistoryKitchenMemo {
+  string common_date = 1;
+  int32 common_serial_number = 2;
+  int32 item_serial_number = 3;
+  int32 kitchen_memo_serial_number = 4;
+  string kitchen_memo_id = 5;
+  string kitchen_memo = 6;
+  string first_registrant_id = 7;
+  string first_registration_datetime = 8;
+  string last_reviser_id = 9;
+  string last_revision_datetime = 10;
+  string state_code = 11;
+}
+
+message OrderHistoryDiscount {
+  string common_date = 1;
+  int32 common_serial_number = 2;
+  int32 discount_serial_number = 3;
+  string discount_section_code = 4;
+  double discount_rate = 5;
+  double discount_amount = 6;
+  string discount_name = 7;
+  string item_id = 8;
+  string first_registrant_id = 9;
+  string first_registration_datetime = 10;
+  string last_reviser_id = 11;
+  string last_revision_datetime = 12;
+  string state_code = 13;
+}
+
+message MenuTemplate {
+  string menu_template_id = 1;
+  string template_name = 2;
+  string first_registrant_id = 3;
+  string first_registration_datetime = 4;
+  string last_reviser_id = 5;
+  string last_revision_datetime = 6;
+  string state_code = 7;
+}
+
+message ApprovalMaster {
+  string approval_masterId = 1;
+  string approval_transaction_number = 2;
+  string transaction_type = 3;
+  string store_id = 4;
+  string store_terminal_id = 5;
+  string source_terminal_id = 6;
+  string payment_code = 7;
+  string request_type = 8;
+  string amount = 9;
+  string status = 10;
+  string response_code = 11;
+  string start_time = 12;
+  string end_time = 13;
+  string approval_number = 14;
+  string device_code = 15;
+  string approval_date = 16;
+  string approval_time = 17;
+  string res_van = 18;
+  string first_registrant_id = 19;
+  string first_registration_datetime = 20;
+  string last_reviser_id = 21;
+  string last_revision_datetime = 22;
+  string state_code = 23;
+}

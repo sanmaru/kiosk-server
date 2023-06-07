@@ -1,0 +1,1459 @@
+syntax = "proto3";
+
+package api.v1;
+import "api/v1/table/table.proto";
+import "google/protobuf/wrappers.proto";
+
+option java_package = "com.ibexlab.pos.api.v1";
+option java_outer_classname = "MessageProto";
+option java_multiple_files = true;
+
+message Common {
+  string target_name = 1;
+  string target_svc = 2;
+  string target_package = 3;
+  string target_api = 4;
+  string source_svc = 5;
+  string source_ver = 6;
+  string source_addr = 7;
+  string req_timestamp = 8;
+  string lauguage_code = 9;
+  string rsp_timestamp = 10;
+  string tran_no = 11;
+  string res_code = 12;
+  string res_message = 13;
+}
+
+message Empty {
+  Common common = 1;
+}
+
+message LoginDomain {
+  message Content {
+    repeated string domain = 1;
+  }
+
+  Common common = 1;
+  Content content = 2;
+}
+
+message PasswordVerification {
+  message Content {
+    string password = 1;
+  }
+
+  Common common = 1;
+  Content content = 2;
+}
+
+message LastModified {
+  message Content {
+    repeated string table_names = 1;
+    repeated string times = 2;
+  }
+
+  Common common = 1;
+  Content content = 2;
+}
+
+message S3Upload {
+  message Content {
+    string content_type = 1;
+    string key = 2;
+    string filename = 3;
+    bytes content = 4;
+  }
+
+  Common common = 1;
+  Content content = 2;
+}
+
+message S3File {
+  message Content {
+    string endpoint = 1;
+    string region = 2;
+    string access_key = 3;
+    string secret_key = 4;
+    string bucket = 5;
+    string key = 6;
+    string etag = 7;
+    string bucket2 = 8; // POS 기동 시 이미지 버킷명을 전달 (이미지 버컷명을 구하기 위해 별도 api 를 만들지 않기 위해 추가)
+  }
+
+  Common common = 1;
+  Content content = 2;
+}
+
+message LogMessage {
+  message Content {
+    int64 log_id = 1;
+    string log_text = 2;
+    string store_id = 3;
+    string store_terminal_id = 4;
+    string modification_time = 5;
+    int64 sending_timestamp = 6;
+  }
+
+  Common common = 1;
+  Content content = 2;
+}
+
+message PaymentApprovalMaster {
+  message Content {
+    string id = 1;
+    string approval_transaction_number = 2;
+    string transaction_type = 3;
+    string store_id = 4;
+    string store_terminal_id = 5;
+    string source_terminal_id = 6;
+    string payment_code = 7;
+    string request_type = 8;
+    string amount = 9;
+    string status = 10;
+    string response_code = 11;
+    string start_time = 12;
+    string end_time = 13;
+    string approval_number = 14;
+    string device_code = 15;
+    string approval_date = 16;
+    string approval_time = 17;
+    string res_van = 18;
+    string first_registrant_id = 19;
+    string first_registration_datetime = 20;
+    string last_reviser_id = 21;
+    string last_revision_datetime = 22;
+    string state_code = 23;
+  }
+
+  Common common = 1;
+  Content content = 2;
+}
+
+message PaymentApprovalSrLog {
+  message Content {
+    string id = 1;
+    string approval_transaction_number = 2;
+    string sr_type = 3;
+    string log_data = 4;
+    string first_registrant_id = 5;
+    string first_registration_datetime = 6;
+    string last_reviser_id = 7;
+    string last_revision_datetime = 8;
+    string state_code = 9;
+  }
+
+  Common common = 1;
+  Content content = 2;
+}
+
+message ItemGroup {
+  message Content {
+    string item_group_id = 1;
+    string upper_item_group_id = 2;
+    string item_group_name = 3;
+    string item_group_type_code = 4;
+    string operation_type_code = 5;
+    bool hiding_yn = 6;
+    string first_registrant_id = 7;
+    string first_registration_datetime = 8;
+    string last_reviser_id = 9;
+    string last_revision_datetime = 10;
+    string state_code = 11;
+    string store_id = 12;
+  }
+
+  Common common = 1;
+  Content content = 2;
+}
+
+message Item {
+  message Content {
+    string item_id = 1;
+    string item_group_id = 2;
+    string item_code = 3;
+    string item_name = 4;
+    string operation_type_code = 5;
+    string sale_type_code = 6;
+    string price_type_code = 7;
+    double cost = 8;
+    double selling_price = 9;
+    bool open_price_yn = 10;
+    string barcode = 11;
+    string apply_tax0_yn = 12;
+    string apply_tax1_yn = 13;
+    string apply_tax2_yn = 14;
+    bool apply_discount_yn = 15;
+    bool hiding_yn = 16;
+    double inventory_quantity = 17;
+    bool kitchen_printer_output_yn = 18;
+    string option_use_type_code = 19;
+    bool recommended_item_yn = 20;
+    bool packing_possible_yn = 21;
+    bool online_sale_yn = 22;
+    bool sold_out_yn = 23;
+    string image_url = 24;
+    string first_registrant_id = 25;
+    string first_registration_datetime = 26;
+    string last_reviser_id = 27;
+    string last_revision_datetime = 28;
+    string state_code = 29;
+    string store_id = 30;
+    string link_code = 31;
+  }
+
+  Common common = 1;
+  Content content = 2;
+}
+
+message AppVerification {
+  message Content {
+    string nonce = 1;
+    string ap3_data = 2;
+    string key_hint = 3;
+  }
+
+  Common common = 1;
+  Content content = 2;
+}
+
+message AppRegistration {
+  message Content {
+    string login_id = 1;
+    string store_terminal_id = 2;
+    string app_key = 3;
+    string app_pkg_key = 4;
+    string version = 5;
+    string device_id = 6;
+    string registration_no = 7;
+    string store_id = 8;
+  }
+
+  Common common = 1;
+  Content content = 2;
+}
+
+message Stores {
+  message Store {
+    string store_id = 1;
+    string store_name = 2;
+  }
+
+  message Content {
+    repeated Store stores = 1;
+  }
+
+  Common common = 1;
+  Content content = 2;
+}
+
+message StoreId {
+  message Content {
+    string store_id = 1;
+    repeated string device_types = 2;
+  }
+
+  Common common = 1;
+  Content content = 2;
+}
+
+message StoreTerminals {
+  message StoreTerminal {
+    string store_id = 1;
+    string terminal_id = 2;
+    string terminal_name = 3;
+  }
+
+  message Content {
+    repeated StoreTerminal terminals = 1;
+  }
+
+  Common common = 1;
+  Content content = 2;
+}
+
+message Terms {
+  message Content {
+    string software = 1;
+    string service = 2;
+    string personalInfoAgreement = 3;
+    string marketingInfoAgreement = 4;
+  }
+
+  Common common = 1;
+  Content content = 2;
+}
+
+message SalesData {
+  message Content {
+    repeated table.SalesHistory sales_history = 1;
+    repeated table.SalesHistoryItem sales_history_item = 2;
+    repeated table.SalesAccountHistory sales_account_history = 3;
+    repeated table.SalesAccountHistoryDetails sales_account_history_details = 4;
+    repeated table.SalesAccountHistoryTip sales_account_history_tip = 5;
+    repeated table.SalesHistoryDiscount sales_history_discount = 6;
+  }
+
+  Common common = 1;
+  Content content = 2;
+}
+
+message SettingsData {
+  message Content {
+    repeated table.Store store = 1;
+    repeated table.StoreTerminalBasicDataItem store_terminal_basic_data_item = 2;
+    repeated table.StoreTerminal store_terminal = 3;
+    repeated table.BasicDataItem basic_data_item = 4;
+  }
+
+  Common common = 1;
+  Content content = 2;
+}
+
+message CashierData {
+  message Content {
+    repeated table.CashdrawCashInOutHistory cashdraw_cash_in_out_history = 1;
+    repeated table.CashierBankHistory cashier_bank_history = 2;
+    repeated table.CashierBankHistoryBill cashier_bank_history_bill = 3;
+  }
+
+  Common common = 1;
+  Content content = 2;
+}
+
+message ReportData {
+  message Content {
+    repeated table.DailyReportHistory daily_report_history = 1;
+    repeated table.DailyReportHistoryPayments daily_report_history_payments = 2;
+  }
+
+  Common common = 1;
+  Content content = 2;
+}
+
+message ItemData {
+  message Content {
+    repeated table.MenuGroupUse menu_group_use = 1;
+    repeated table.MenuGroup menu_group = 2;
+    repeated table.MenuItem menu_item = 3;
+    repeated table.Item item = 4;
+    repeated table.ItemGroup item_group = 5;
+    repeated table.OptionGroup option_group = 6;
+    repeated table.OptionEntity option_entity = 7;
+    repeated table.SetEntity set_entity = 8;
+    repeated table.ItemOption item_option = 9;
+    repeated table.MenuTemplate menu_template = 10;
+  }
+
+  Common common = 1;
+  Content content = 2;
+}
+
+message LicenseInfo {
+  string ver = 1;
+  string key = 2;
+  string pkg = 3;
+  string sign = 4;
+}
+message LicensePermission {
+  string device_id = 1;
+  string store_id = 2;
+  string terminal_id = 3;
+  string reg_date = 4;
+  int64 expire_date = 5;
+  string update_date = 6;
+  string app_version = 7;
+  string app_version_code = 8;
+  string sign = 9;
+  string state = 10;
+  string note = 11;
+}
+
+message AppVersionInfo {
+  string min_ver = 1;
+  string last_ver = 2;
+  string is_lock = 3;
+}
+
+
+message AppLicenseRegister {
+  string app_reg_id = 1;
+  string license_issued_id = 2;
+  string store_id = 3;
+  string store_terminal_id = 4;
+  string device_unique_value = 5;
+  string app_package_id = 6;
+  string reg_date = 7;
+  string open_date = 8;
+  int64 expire_date = 9;
+  string license_stat = 10;
+  string note = 11;
+  string custom_version_yn = 12;
+  string app_version_name = 13;
+  string app_current_version_code = 14;
+  string app_min_version_code = 15;
+  string app_last_version_code = 16;
+  string state_code = 17;
+}
+
+message IssueLicenseRequest {
+  message Content {
+    LicenseInfo license_info = 1;
+  }
+
+  Common common = 1;
+  Content content = 2;
+}
+
+message IssueLicenseResponse {
+  message Content {
+    LicenseInfo license_info = 1;
+  }
+
+  Common common = 1;
+  Content content = 2;
+}
+
+message RequestPermissionRequest {
+  message Content {
+    LicenseInfo license_info = 1;
+    LicensePermission permission = 2;
+  }
+
+  Common common = 1;
+  Content content = 2;
+}
+
+message RequestPermissionResponse {
+  message Content {
+    LicenseInfo license_info = 1;
+    LicensePermission permission = 2;
+  }
+
+  Common common = 1;
+  Content content = 2;
+}
+
+
+message ConfirmPermissionRequest {
+  message Content {
+    LicenseInfo license_info = 1;
+    LicensePermission permission = 2;
+  }
+
+  Common common = 1;
+  Content content = 2;
+}
+
+message ConfirmPermissionResponse {
+  message Content {
+    LicenseInfo license_info = 1;
+    LicensePermission permission = 2;
+  }
+
+  Common common = 1;
+  Content content = 2;
+}
+
+
+message VerifyLicenseRequest {
+  message Content {
+    LicenseInfo license_info = 1;
+    LicensePermission permission = 2;
+    AppVersionInfo app_ver_info = 3;
+  }
+
+  Common common = 1;
+  Content content = 2;
+}
+
+message VerifyLicenseResponse {
+  message Content {
+    LicenseInfo license_info = 1;
+    LicensePermission permission = 2;
+    AppVersionInfo app_ver_info = 3;
+  }
+
+  Common common = 1;
+  Content content = 2;
+}
+
+message GetLicenseListRequest {
+  message Content {
+    string store_id = 1;
+    int32 page = 2;
+    int32 limit = 3;
+    int32 order_store_id = 4;
+    int32 order_app_package_id = 5;
+    int32 order_open_date = 6;
+    int32 order_expire_date = 7;
+    int32 order_license_stat = 8;
+  }
+
+  Common common = 1;
+  Content content = 2;
+}
+
+message GetLicenseListResponse {
+  message Content {
+    repeated AppLicenseRegister item = 1;
+  }
+
+  Common common = 1;
+  Content content = 2;
+}
+
+message GetLicenseDetailRequest {
+  message Content {
+    string store_id = 1;
+    string app_reg_id = 2;
+  }
+
+  Common common = 1;
+  Content content = 2;
+}
+
+message GetLicenseDetailResponse {
+  message Content {
+    AppLicenseRegister item = 1;
+  }
+
+  Common common = 1;
+  Content content = 2;
+}
+
+message UpdateLicenseInfoRequest {
+  message Content {
+    string store_id = 1;
+    string app_reg_id = 2;
+    int64 expire_date = 3;
+    string license_stat = 4;
+    string note = 5;
+    string custom_version_yn = 6;
+    string app_version_name = 7;
+  }
+
+  Common common = 1;
+  Content content = 2;
+}
+
+message UpdateLicenseInfoResponse {
+  message Content {
+    AppLicenseRegister item = 1;
+  }
+
+  Common common = 1;
+  Content content = 2;
+}
+
+/*
+    주문 동기화
+*/
+
+message TableLock {
+  message Content {
+    string client_type = 1;
+    string store_id = 2;
+    string store_terminal_id = 3;
+    string store_terminal_group_id = 4;
+    string table_id = 5;
+  }
+
+  Common common = 1;
+  Content content = 2;
+}
+
+message OrderData {
+  message Order {
+    table.OrderHistory order_history = 1;
+    repeated table.OrderHistoryItem order_history_item = 2;
+    repeated table.OrderHistoryKitchenMemo order_history_kitchen_memo = 3;
+    repeated table.OrderHistoryDiscount order_history_discount = 4;
+  }
+
+  message Content {
+    string client_type = 1;
+    string store_id = 2;
+    string store_terminal_id = 3;
+    string store_terminal_group_id = 4;
+    bool is_delete = 5;
+    repeated Order orders = 6;
+  }
+
+  Common common = 1;
+  Content content = 2;
+}
+
+message EntranceRegistrationData {
+  message Content {
+    string login_id = 1;
+    string store_id = 2;
+    string store_terminal_id = 3;
+    string phone_number = 4;
+    bool is_agree = 5;
+  }
+
+  Common common = 1;
+  Content content = 2;
+}
+
+message ASPApiRequest {
+  Common common = 1;
+  string content = 2;
+}
+
+message ASPApiResponse {
+  Common common = 1;
+  string content = 2;
+}
+
+message BalanceItemRequest {
+  message Content {
+    string store_id = 1;
+    string store_terminal_id = 2;
+    string item_group_id = 3;
+    string name = 4;
+    string barcode = 5;
+    int32 page_index = 6;
+    int32 page_size = 7;
+    string item_id = 8;
+    string doc_id = 9;
+    string store_place_id = 10;
+  }
+
+  Common common = 1;
+  Content content = 2;
+}
+
+message BalanceItemResponse{
+  message Content {
+    int32 count = 1;
+    repeated BalanceItem items = 2;
+    int32 total_count = 3;
+  }
+
+  Common common = 1;
+  Content content = 2;
+}
+
+message BalanceItem {
+  string item_id = 1;
+  string item_group_id = 2;
+  string name = 3;
+  string image_url = 4;
+  double sale_price = 5;
+  double purchase_price = 6;
+  bool is_marking = 7;
+  double qty = 8;
+  string barcode = 9;
+  bool is_favorite = 10;
+  string item_unit = 11;
+  double last_purchase_price = 12;
+}
+
+message AcceptanceItem {
+  string acceptance_items_id = 1;
+  string name = 2;
+  double price = 3;
+  string date = 4;
+  string type = 5;
+  string store_place_id = 6;
+}
+
+message AcceptanceItemDetail {
+  string id = 1;
+  string item_id = 2;
+  string name = 3;
+  string barcode = 4;
+  double sale_price = 5;
+  double purchase_price = 6;
+  double qty = 7;
+}
+
+message Supplier {
+  string id = 1;
+  string name = 2;
+}
+message RevisionItem {
+  string revision_items_id = 1;
+  string name = 3;
+  string date = 4;
+  double price = 5;
+  string type = 6;
+  string doc_id = 7;
+  string upper_revision_items_id = 8;
+  string sub_id = 9;
+  string login_id = 10;
+  string store_place_id = 11;
+}
+
+message RevisionItemDetail {
+  string id = 1;
+  string item_id = 2;
+  string name = 3;
+  string barcode = 4;
+  double sale_price = 5;
+  double purchase_price = 6;
+  double qty = 7;
+  double real_qty = 8;
+  string memo = 9;
+}
+
+message ItemForInventory {
+  string item_id = 1;
+  string item_group_id = 2;
+  string name = 3;
+  string barcode = 4;
+  double sale_price = 5;
+  double purchase_price = 6;
+  double qty = 7;
+  string image_url = 8;
+  bool is_favorite = 9;
+  bool is_marking = 10;
+  string item_unit = 11;
+  double last_purchase_price = 12;
+}
+//
+//message ListAcceptanceItemsRequest {
+//  message Content {
+//    string store_id = 1;
+//    string store_terminal_id = 2;
+//    string start_date = 3;
+//    string end_date = 4;
+//    string type = 5;
+//    int32 page_index = 6;
+//    int32 page_size = 7;
+//  }
+//
+//  Common common = 1;
+//  Content content = 2;
+//}
+//
+//message ListAcceptanceItemsResponse{
+//  message Content {
+//    int32 count = 1;
+//    repeated AcceptanceItem items = 2;
+//  }
+//
+//  Common common = 1;
+//  Content content = 2;
+//}
+//
+//message AddAcceptanceItemRequest {
+//  message Content {
+//    string store_id = 1;
+//    string store_terminal_id = 2;
+//    string type = 3;
+//    string name = 4;
+//    string supplier_id = 5;
+//    repeated AcceptanceItemDetail items = 6;
+//  }
+//
+//  Common common = 1;
+//  Content content = 2;
+//}
+//
+//message AddAcceptanceItemResponse{
+//  message Content {
+//    string acceptance_items_id = 1;
+//  }
+//
+//  Common common = 1;
+//  Content content = 2;
+//}
+//message UpdateAcceptanceItemRequest {
+//  message Content {
+//    string store_id = 1;
+//    string store_terminal_id = 2;
+//    string type = 3;
+//    string name = 4;
+//    string acceptance_items_id = 5;
+//    string supplier_id = 6;
+//    repeated AcceptanceItemDetail items = 7;
+//  }
+//
+//  Common common = 1;
+//  Content content = 2;
+//}
+//
+//message UpdateAcceptanceItemResponse{
+//  message Content {
+//    string acceptance_items_id = 1;
+//  }
+//
+//  Common common = 1;
+//  Content content = 2;
+//}
+//message DeleteAcceptanceItemRequest {
+//  message Content {
+//    string store_id = 1;
+//    string store_terminal_id = 2;
+//    string acceptance_items_id = 3;
+//  }
+//
+//  Common common = 1;
+//  Content content = 2;
+//}
+//
+//message DeleteAcceptanceItemResponse{
+//  message Content {
+//    string acceptance_items_id = 1;
+//  }
+//
+//  Common common = 1;
+//  Content content = 2;
+//}
+//message DetailAcceptanceItemRequest {
+//  message Content {
+//    string store_id = 1;
+//    string store_terminal_id = 2;
+//    string acceptance_items_id = 3;
+//  }
+//
+//  Common common = 1;
+//  Content content = 2;
+//}
+//
+//message DetailAcceptanceItemResponse{
+//  message Content {
+//    string date = 1;
+//    string name = 2;
+//    string acceptance_items_id = 3;
+//    repeated AcceptanceItemDetail items = 4;
+//    string supplier_id = 5;
+//    string type = 6;
+//  }
+//
+//  Common common = 1;
+//  Content content = 2;
+//}
+
+
+////////////////////
+
+
+message PickHistoryApp {
+  string pick_history_id = 1;
+  string name = 2;
+  double price = 3;
+  string date = 4;
+  string pick_state = 5;
+  string picking_type = 6;
+  string doc_id = 7;
+  string login_id = 8;
+  string source_locate_id = 9;
+  string target_locate_id = 10;
+}
+
+message PickHistoryItemApp {
+  string pick_history_item_id = 1;
+  string item_id = 2;
+  string item_name = 3;
+  string barcode = 4;
+  double sale_price = 5;
+  double purchase_price = 6;
+  double product_qty = 7;
+  string pick_state = 8;
+  string memo = 9;
+  bool is_deleted = 10;
+  string item_unit = 11;
+}
+
+
+message ListPickHistoryAppRequest {
+  message Content {
+    string store_id = 1;
+    string store_terminal_id = 2;
+    string start_date = 3;
+    string end_date = 4;
+    string pick_state = 5;
+    string picking_type = 8;
+    int32 page_index = 6;
+    int32 page_size = 7;
+  }
+  Common common = 1;
+  Content content = 2;
+}
+
+message ListPickHistoryAppResponse{
+  message Content {
+    int32 count = 1;
+    int32 total_count = 2;
+    string pick_state = 3;
+    string picking_type = 4;
+    repeated PickHistoryApp items = 5;
+  }
+
+  Common common = 1;
+  Content content = 2;
+}
+
+message ListPickHistoryByDocIdAppRequest {
+  message Content {
+    string store_id = 1;
+    string store_terminal_id = 2;
+    string doc_id = 3;
+    int32 page_index = 4;
+    int32 page_size = 5;
+  }
+  Common common = 1;
+  Content content = 2;
+}
+
+message ListPickHistoryByDocIdAppResponse{
+  message Content {
+    int32 count = 1;
+    int32 total_count = 2;
+    repeated PickHistoryApp items = 3;
+  }
+
+  Common common = 1;
+  Content content = 2;
+}
+
+message AddPickHistoryAppRequest {
+  message Content {
+    string store_id = 1;
+    string store_terminal_id = 2;
+    string pick_state = 3;
+    string picking_type = 4;
+    string name = 5;
+    string supplier_id = 6;
+    repeated PickHistoryItemApp items = 7;
+    string doc_id = 8;
+    string store_place_id = 9;
+  }
+
+  Common common = 1;
+  Content content = 2;
+}
+
+message AddPickHistoryAppResponse{
+  message Content {
+    string pick_history_id = 1;
+  }
+
+  Common common = 1;
+  Content content = 2;
+}
+
+message UpdatePickHistoryAppRequest {
+  message Content {
+    string store_id = 1;
+    string store_terminal_id = 2;
+    string pick_state = 3;
+    string picking_type = 4;
+    string name = 5;
+    string pick_history_id = 6;
+    string supplier_id = 7;
+    repeated PickHistoryItemApp items = 8;
+    string doc_id = 9;
+    string store_place_id = 10;
+  }
+
+  Common common = 1;
+  Content content = 2;
+}
+
+message UpdatePickHistoryAppResponse{
+  message Content {
+    string pick_history_id = 1;
+  }
+
+  Common common = 1;
+  Content content = 2;
+}
+
+message DeletePickHistoryAppRequest {
+  message Content {
+    string store_id = 1;
+    string store_terminal_id = 2;
+    string pick_history_id = 3;
+  }
+
+  Common common = 1;
+  Content content = 2;
+}
+
+message DeletePickHistoryAppResponse{
+  message Content {
+    string pick_history_id = 1;
+  }
+
+  Common common = 1;
+  Content content = 2;
+}
+
+message ReadPickHistoryItemAppRequest {
+  message Content {
+    string store_id = 1;
+    string store_terminal_id = 2;
+    string pick_history_id = 3;
+  }
+
+  Common common = 1;
+  Content content = 2;
+}
+
+message ReadPickHistoryItemAppResponse{
+  message Content {
+    string date = 1;
+    string name = 2;
+    string pick_history_id = 3;
+    string supplier_id = 4;
+    string pick_state = 5;
+    string picking_type = 6;
+    repeated PickHistoryItemApp items = 7;
+  }
+
+  Common common = 1;
+  Content content = 2;
+}
+
+//////////
+
+message ListSupplierRequest {
+  message Content {
+    string store_id = 1;
+    string store_terminal_id = 2;
+  }
+
+  Common common = 1;
+  Content content = 2;
+}
+
+message ListSupplierResponse{
+  message Content {
+    int32 count = 1;
+    repeated Supplier items = 2;
+  }
+
+  Common common = 1;
+  Content content = 2;
+}
+message AddSupplierRequest {
+  message Content {
+    string store_id = 1;
+    string store_terminal_id = 2;
+    string name = 3;
+  }
+
+  Common common = 1;
+  Content content = 2;
+}
+
+message AddSupplierResponse{
+  message Content {
+    string supplier_id = 1;
+  }
+
+  Common common = 1;
+  Content content = 2;
+}
+message UpdateSupplierRequest {
+  message Content {
+    string store_id = 1;
+    string store_terminal_id = 2;
+    string name = 3;
+    string supplier_id = 4;
+  }
+
+  Common common = 1;
+  Content content = 2;
+}
+
+message UpdateSupplierResponse{
+  message Content {
+    string supplier_id = 1;
+  }
+
+  Common common = 1;
+  Content content = 2;
+}
+message DeleteSupplierRequest {
+  message Content {
+    string store_id = 1;
+    string store_terminal_id = 2;
+    string supplier_id = 3;
+  }
+
+  Common common = 1;
+  Content content = 2;
+}
+
+message DeleteSupplierResponse{
+  message Content {
+    string supplier_id = 1;
+  }
+
+  Common common = 1;
+  Content content = 2;
+}
+
+
+message ListRevisionItemsRequest {
+  message Content {
+    string store_id = 1;
+    string store_terminal_id = 2;
+    string type = 3;
+    string start_date = 4;
+    string end_date = 5;
+    int32 page_index = 6;
+    int32 page_size = 7;
+  }
+
+  Common common = 1;
+  Content content = 2;
+}
+
+message ListRevisionItemsResponse {
+  message Content {
+    int32 count = 1;
+    repeated RevisionItem items = 2;
+  }
+
+  Common common = 1;
+  Content content = 2;
+}
+
+message ListRevisionItemsByDocIdRequest {
+  message Content {
+    string store_id = 1;
+    string store_terminal_id = 2;
+    string doc_id = 3;
+    string type = 4;
+    int32 page_index = 5;
+    int32 page_size = 6;
+  }
+
+  Common common = 1;
+  Content content = 2;
+}
+
+message ListRevisionItemsByDocIdResponse {
+  message Content {
+    int32 count = 1;
+    repeated RevisionItem items = 2;
+  }
+
+  Common common = 1;
+  Content content = 2;
+}
+
+message ListRevisionItemsBySubIdRequest {
+  message Content {
+    string store_id = 1;
+    string store_terminal_id = 2;
+    string doc_id = 3;
+    string sub_id = 4;
+  }
+
+  Common common = 1;
+  Content content = 2;
+}
+
+message ListRevisionItemsBySubIdResponse {
+  message Content {
+    int32 count = 1;
+    string revision_items_id = 2;
+    string available_sub_id = 3;
+    repeated RevisionItem items = 4;
+  }
+
+  Common common = 1;
+  Content content = 2;
+}
+
+message AddRevisionItemRequest {
+  message Content {
+    string store_id = 1;
+    string store_terminal_id = 2;
+    string type = 3;
+    string date = 4;
+    string name = 5;
+    repeated RevisionItemDetail items = 6;
+    string upper_revision_items_id = 7;
+    string doc_id = 8;
+    string sub_id = 9;
+    string login_id = 10;
+    string store_place_id = 11;
+  }
+
+  Common common = 1;
+  Content content = 2;
+}
+
+message AddRevisionItemResponse {
+  message Content {
+    string revision_items_id = 1;
+  }
+
+  Common common = 1;
+  Content content = 2;
+}
+
+message UpdateRevisionItemRequest {
+  message Content {
+    string store_id = 1;
+    string store_terminal_id = 2;
+    string type = 3;
+    string date = 4;
+    string name = 5;
+    string revision_items_id = 6;
+    repeated RevisionItemDetail items = 7;
+    string upper_revision_items_id = 8;
+    string doc_id = 9;
+    string sub_id = 10;
+    string login_id = 11;
+    string store_place_id = 12;
+  }
+
+  Common common = 1;
+  Content content = 2;
+}
+
+message UpdateRevisionItemResponse {
+  message Content {
+    string revision_items_id = 1;
+  }
+
+  Common common = 1;
+  Content content = 2;
+}
+
+
+message DeleteRevisionItemRequest {
+  message Content {
+    string store_id = 1;
+    string store_terminal_id = 2;
+    string revision_items_id = 3;
+  }
+
+  Common common = 1;
+  Content content = 2;
+}
+
+message DeleteRevisionItemResponse {
+  message Content {
+    string revision_items_id = 1;
+  }
+
+  Common common = 1;
+  Content content = 2;
+}
+
+message DetailRevisionItemsRequest {
+  message Content {
+    string store_id = 1;
+    string store_terminal_id = 2;
+    string revision_items_id = 3;
+  }
+
+  Common common = 1;
+  Content content = 2;
+}
+
+message DetailRevisionItemsResponse {
+  message Content {
+    string date = 1;
+    string name = 2;
+    repeated RevisionItemDetail items = 3;
+  }
+
+  Common common = 1;
+  Content content = 2;
+}
+
+message ItemForInventoryRequest {
+  message Content {
+    string store_id = 1;
+    string item_id = 2;
+    string barcode = 3;
+    string name = 4;
+    string item_group_id = 5;
+    string store_place_id = 6;
+  }
+
+  Common common = 1;
+  Content content = 2;
+}
+
+message ItemForInventoryResponse {
+  message Content {
+    int32 count = 1;
+    repeated ItemForInventory items = 2;
+  }
+
+  Common common = 1;
+  Content content = 2;
+}
+
+message ItemImport {
+  message Content {
+    string store_id = 1;
+    string login_id = 2;
+    bytes file_content = 3;
+    bool deflated = 4;
+  }
+
+  Common common = 1;
+  Content content = 2;
+}
+
+message ItemsGetItemRequest {
+  message Content {
+    google.protobuf.StringValue item_id = 1;
+    google.protobuf.StringValue item_name = 2;
+    google.protobuf.StringValue item_group_id = 3;
+    google.protobuf.StringValue item_group_name = 4;
+    repeated string sale_type_code = 5;
+    google.protobuf.StringValue store_id = 6;
+    repeated string state_code = 7;
+  }
+
+  Common common = 1;
+  Content content = 2;
+}
+
+message ItemsGetItemResponse {
+  message Content {
+    repeated table.Item item = 1;
+  }
+
+  Common common = 1;
+  Content content = 2;
+}
+
+message ItemsUpdateItemRequest {
+  message Content {
+    repeated table.Item item = 1;
+    google.protobuf.StringValue store_id = 2;
+  }
+
+  Common common = 1;
+  Content content = 2;
+}
+
+message ItemsUpdateItemResponse {
+  message Content {
+    repeated table.Item item = 1;
+  }
+
+  Common common = 1;
+  Content content = 2;
+}
+
+message ItemsDeleteItemRequest {
+  message Content {
+    repeated string item_id = 1;
+    google.protobuf.StringValue store_id = 2;
+  }
+
+  Common common = 1;
+  Content content = 2;
+}
+
+message ItemsDeleteItemResponse {
+  message Content {
+    repeated table.Item item = 1;
+  }
+
+  Common common = 1;
+  Content content = 2;
+}
+
+message ItemsGetItemGroupRequest {
+  message Content {
+    google.protobuf.StringValue item_group_id = 1;
+    google.protobuf.StringValue item_group_name = 2;
+    google.protobuf.StringValue store_id = 3;
+    repeated string state_code = 4;
+  }
+
+  Common common = 1;
+  Content content = 2;
+}
+
+message ItemsGetItemGroupResponse {
+  message Content {
+    repeated table.ItemGroup itemGroup = 1;
+  }
+
+  Common common = 1;
+  Content content = 2;
+}
+
+message ItemsUpdateItemGroupRequest {
+  message Content {
+    table.ItemGroup itemGroup = 1;
+    google.protobuf.StringValue store_id = 2;
+  }
+
+  Common common = 1;
+  Content content = 2;
+}
+
+message ItemsUpdateItemGroupResponse {
+  message Content {
+    table.ItemGroup itemGroup = 1;
+  }
+
+  Common common = 1;
+  Content content = 2;
+}
+
+message ItemsDeleteItemGroupRequest {
+  message Content {
+    google.protobuf.StringValue item_group_id = 1;
+    google.protobuf.StringValue store_id = 2;
+  }
+
+  Common common = 1;
+  Content content = 2;
+}
+
+message ItemsDeleteItemGroupResponse {
+  message Content {
+    table.ItemGroup itemGroup = 1;
+  }
+
+  Common common = 1;
+  Content content = 2;
+}
+message VoidBlock {
+  message Content {
+    string store_id = 1;
+    string store_terminal_id = 2;
+    string payment_code = 3;
+    string approvalDate = 4;
+    double amount = 5;
+  }
+
+  Common common = 1;
+  Content content = 2;
+}
+
+message FirebaseToken {
+  message Content {
+    string token = 1;
+  }
+
+  Common common = 1;
+  Content content = 2;
+}
+
+message Notification {
+  message Content {
+    string id = 1;
+    string from = 2;
+    string to = 3;
+    string title = 4;
+    string content = 5;
+    string data = 6;
+    bool urgent = 7;
+    string start_time = 8;
+    string end_time = 9;
+  }
+
+  Common common = 1;
+  Content content = 2;
+}

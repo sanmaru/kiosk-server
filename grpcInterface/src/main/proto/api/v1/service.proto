@@ -1,0 +1,179 @@
+syntax = "proto3";
+
+package api.v1;
+
+import "api/v1/message.proto";
+
+option java_package = "com.ibexlab.pos.api.v1";
+option java_outer_classname = "ServiceProto";
+option java_multiple_files = true;
+
+service CommonService {
+  rpc UploadImage (S3Upload) returns (S3File);
+
+  rpc DeleteImage (S3File) returns (Empty);
+}
+
+service BusinessService {
+  rpc GetNonce (Empty) returns (AppVerification);
+
+  rpc VerifyApp (AppVerification) returns (AppVerification);
+
+  rpc GetLoginDomains (Empty) returns (LoginDomain);
+
+  rpc RegisterApp (AppRegistration) returns (AppRegistration);
+
+  rpc GetAvailableStores (Empty) returns (Stores);
+
+  rpc GetAvailableTerminals (StoreId) returns (StoreTerminals);
+
+  rpc GetTerms (Empty) returns (Terms);
+
+  rpc VerifyAdminPassword (PasswordVerification) returns (PasswordVerification);
+
+  rpc AllTables (LastModified) returns (S3File);
+
+  rpc UploadSettings (SettingsData) returns (SettingsData);
+
+  rpc UploadSales (SalesData) returns (SalesData);
+
+  rpc UploadCashierData (CashierData) returns (CashierData);
+
+  rpc UploadReports (ReportData) returns (ReportData);
+
+  rpc SalesAndReportTables (Empty) returns (S3File);
+
+  rpc ItemTables (LastModified) returns (ItemData);
+
+  rpc EntranceRegistration (EntranceRegistrationData) returns (EntranceRegistrationData);
+
+  rpc IsVoidBlocked (VoidBlock) returns (Empty);
+}
+
+service NotificationService {
+  rpc ListenMessage (stream Notification) returns (stream Notification);
+
+  rpc UpdateFirebaseToken(FirebaseToken) returns (Empty);
+
+  rpc UpdateMessageState (Notification) returns (Empty);
+
+  rpc UpdateDeviceState(Notification) returns (Empty);
+
+  rpc SendMessage (Notification) returns (Empty);
+}
+
+service ItemsService {
+  rpc ImportItems (ItemImport) returns (Empty);
+
+  rpc ItemsGetItem (ItemsGetItemRequest) returns (ItemsGetItemResponse);
+
+  rpc ItemsUpdateItem (ItemsUpdateItemRequest) returns (ItemsUpdateItemResponse);
+
+  rpc ItemsDeleteItem (ItemsDeleteItemRequest) returns (ItemsDeleteItemResponse);
+
+  rpc ItemsGetItemGroup (ItemsGetItemGroupRequest) returns (ItemsGetItemGroupResponse);
+
+  rpc ItemsUpdateItemGroup (ItemsUpdateItemGroupRequest) returns (ItemsUpdateItemGroupResponse);
+
+  rpc ItemsDeleteItemGroup (ItemsDeleteItemGroupRequest) returns (ItemsDeleteItemGroupResponse);
+
+}
+
+service InventoryService {
+  rpc BalanceItems (BalanceItemRequest) returns (BalanceItemResponse);
+
+  //  rpc ListAcceptanceItems (ListAcceptanceItemsRequest) returns (ListAcceptanceItemsResponse);
+  //
+  //  rpc AddAcceptanceItem (AddAcceptanceItemRequest) returns (AddAcceptanceItemResponse);
+  //
+  //  rpc UpdateAcceptanceItem (UpdateAcceptanceItemRequest) returns (UpdateAcceptanceItemResponse);
+  //
+  //  rpc DeleteAcceptanceItem (DeleteAcceptanceItemRequest) returns (DeleteAcceptanceItemResponse);
+  //
+  //  rpc DetailAcceptanceItem (DetailAcceptanceItemRequest) returns (DetailAcceptanceItemResponse);
+  //////
+  rpc ListPickHistoryApp (ListPickHistoryAppRequest) returns (ListPickHistoryAppResponse);
+
+  rpc ListPickHistoryByDocIdApp (ListPickHistoryByDocIdAppRequest) returns (ListPickHistoryByDocIdAppResponse);
+
+  rpc AddPickHistoryApp (AddPickHistoryAppRequest) returns (AddPickHistoryAppResponse);
+
+  rpc UpdatePickHistoryApp (UpdatePickHistoryAppRequest) returns (UpdatePickHistoryAppResponse);
+
+  rpc DeletePickHistoryApp (DeletePickHistoryAppRequest) returns (DeletePickHistoryAppResponse);
+
+  rpc ReadPickHistoryItemApp (ReadPickHistoryItemAppRequest) returns (ReadPickHistoryItemAppResponse);
+  //////
+  rpc ListSupplier (ListSupplierRequest) returns (ListSupplierResponse);
+
+  rpc AddSupplier (AddSupplierRequest) returns (AddSupplierResponse);
+
+  rpc UpdateSupplier (UpdateSupplierRequest) returns (UpdateSupplierResponse);
+
+  rpc DeleteSupplier (DeleteSupplierRequest) returns (DeleteSupplierResponse);
+
+  rpc ListRevisionItems (ListRevisionItemsRequest) returns (ListRevisionItemsResponse);
+
+  rpc ListRevisionItemsByDocId (ListRevisionItemsByDocIdRequest) returns (ListRevisionItemsByDocIdResponse);
+
+  rpc ListRevisionItemsBySubId (ListRevisionItemsBySubIdRequest) returns (ListRevisionItemsBySubIdResponse);
+
+  rpc AddRevisionItem (AddRevisionItemRequest) returns (AddRevisionItemResponse);
+
+  rpc UpdateRevisionItem (UpdateRevisionItemRequest) returns (UpdateRevisionItemResponse);
+
+  rpc DeleteRevisionItem (DeleteRevisionItemRequest) returns (DeleteRevisionItemResponse);
+
+  rpc DetailRevisionItems (DetailRevisionItemsRequest) returns (DetailRevisionItemsResponse);
+
+  rpc DetailRevisionItemsSum (DetailRevisionItemsRequest) returns (DetailRevisionItemsResponse);
+
+  rpc DetailRevisionItemsCheck (DetailRevisionItemsRequest) returns (DetailRevisionItemsResponse);
+
+  rpc ItemForInventory (ItemForInventoryRequest) returns (ItemForInventoryResponse);
+}
+
+
+service LogService {
+  rpc UploadLogCloud (stream LogMessage) returns (stream LogMessage) {
+  }
+
+  rpc UploadApprovalMasterCloud (stream PaymentApprovalMaster) returns (stream PaymentApprovalMaster) {
+  }
+
+  rpc UploadApprovalSrLogCloud (stream PaymentApprovalSrLog) returns (stream PaymentApprovalSrLog) {
+  }
+}
+
+
+service LicenseService {
+  rpc IssueLicense (IssueLicenseRequest) returns (IssueLicenseResponse);
+
+  rpc RequestPermission (RequestPermissionRequest) returns (RequestPermissionResponse);
+
+  rpc ConfirmPermission (ConfirmPermissionRequest) returns (ConfirmPermissionResponse);
+
+  rpc VerifyLicense (VerifyLicenseRequest) returns (VerifyLicenseResponse);
+
+  rpc GetLicenseList (GetLicenseListRequest) returns (GetLicenseListResponse);
+
+  rpc GetLicenseDetail (GetLicenseDetailRequest) returns (GetLicenseDetailResponse);
+
+  rpc UpdateLicenseInfo (UpdateLicenseInfoRequest) returns (UpdateLicenseInfoResponse);
+}
+
+service OrderService {
+  rpc HoldTableLock (TableLock) returns (TableLock);
+
+  rpc ReleaseTableLock (TableLock) returns (TableLock);
+
+  rpc PutOrder (OrderData) returns (OrderData);
+
+  rpc DeleteOrder (OrderData) returns (OrderData);
+
+  rpc GetOrders (OrderData) returns (OrderData);
+
+  rpc ListenOrder (stream OrderData) returns (stream OrderData);
+}
+
+
