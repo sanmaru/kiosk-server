@@ -15,6 +15,9 @@ build/
 out/
 !**/src/main/**/out/
 !**/src/test/**/out/
+.idea
+
+
 
 ### Eclipse ###
 .apt_generated
@@ -28,12 +31,15 @@ bin/
 !**/src/main/**/bin/
 !**/src/test/**/bin/
 
+
+
 ### NetBeans ###
 /nbproject/private/
 /nbbuild/
 /dist/
 /nbdist/
 /.nb-gradle/
+
 
 ### VS Code ###
 .vscode/
@@ -43,4 +49,4 @@ bin/
 
 ### Custom ###
 **/logs/
-**/.idea/
+
