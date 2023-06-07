@@ -1,0 +1,43 @@
+spring:
+  config:
+    profiles:
+      include: local
+  output:
+    ansi:
+      enabled: ALWAYS  # ALWAYS, DETECT, NEVER
+  datasource:
+    driver-class-name: "org.postgresql.Driver"
+    hikari:
+      maximum-pool-size: 4
+    url: jdbc:postgresql://localhost:5432/postgres
+    username: postgres
+    password: monki123
+    platform: postgres
+  jpa:
+    hibernate:
+      ddl-auto: update
+      dialect: org.hibernate.dialect.PostgreSQL10Dialect
+    show-sql: true
+    properties:
+      hibernate:
+        format_sql: true
+grpc:
+  port: 9091
+  enableReflection: true
+  client:
+    test:
+      address: 'static://127.0.0.1:9091'
+      negotiationtype: plaintext
+logging:
+  pattern:
+    rolling-file-name: "/Users/mk/workspaces/self-pro/kiosk-server/grpcServer/logs/grpcServer.log.%d{yyyy-MM-dd}.%i"
+  file:
+    name: "/Users/mk/workspaces/self-pro/kiosk-server/grpcServer/logs/grpcServer.log"
+    max-history: 10
+    max-size: 2MB
+  level:
+    root: debug
+    io.grpc: info
+    org.lognet: info
+    org.springframework: warn
+    org.hibernate: info
