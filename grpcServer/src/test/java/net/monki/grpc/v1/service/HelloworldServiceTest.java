@@ -1,14 +1,10 @@
-package net.monki;
+package net.monki.grpc.v1.service;
 
-import com.google.rpc.context.AttributeContext;
-import io.grpc.ManagedChannel;
-import io.grpc.ManagedChannelBuilder;
 import io.grpc.internal.testing.StreamRecorder;
-import io.grpc.stub.StreamObserver;
-import net.monki.data.MemberService;
+import net.monki.GRPCServer;
+import net.monki.grpc.v1.service.HelloWorldService;
 import net.monki.kiosk.HelloReply;
 import net.monki.kiosk.HelloRequest;
-import net.monki.kiosk.SimpleGrpc;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;

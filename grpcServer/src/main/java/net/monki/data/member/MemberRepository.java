@@ -1,8 +1,8 @@
-package net.monki.data;
+package net.monki.data.member;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
 @Repository
-public interface MemberRepository extends JpaRepository<Member, Long> {
+public interface MemberRepository extends JpaRepository<MemberEntity, Long> {
 }
