@@ -7,26 +7,28 @@ plugins {
 
 group = "org.example"
 version = "1.0-SNAPSHOT"
+val grpcVersion = "1.55.1"
+val lognetStarterVersion = "5.1.2"
+//val postgresqlVersion = "42.6.0"
 
 repositories {
     mavenCentral()
 }
 
 dependencies {
-    val grpcVersion = "1.55.1"
 
     /* Springboot with gRPC */
     implementation("org.springframework.boot:spring-boot-starter")
-    implementation("io.github.lognet:grpc-spring-boot-starter:5.1.2")
+    implementation("io.github.lognet:grpc-spring-boot-starter:$lognetStarterVersion")
 
     /* DataSource & Annotation & JDBC Connection*/
     implementation("org.springframework.boot:spring-boot-starter-data-jdbc")
     implementation("org.springframework.boot:spring-boot-starter-data-jpa")
-    implementation("org.projectlombok:lombok:1.18.26")
+    implementation("org.projectlombok:lombok")
 
     /* postgresql DB */
-    implementation("org.postgresql:postgresql:42.6.0")
-    testImplementation("junit:junit:4.13.1")
+    implementation("org.postgresql:postgresql")
+    testImplementation("junit:junit")
     runtimeOnly("org.postgresql:postgresql")
 
     /* gRPC Proto file project */
