@@ -24,9 +24,6 @@ dependencies {
     implementation("org.springframework.boot:spring-boot-starter-data-jpa")
     implementation("org.projectlombok:lombok:1.18.26")
 
-    /* Code Corverage */
-//    implementation("org.jacoco:jacoco-maven-plugin:0.8.10")
-
     /* postgresql DB */
     implementation("org.postgresql:postgresql:42.6.0")
     testImplementation("junit:junit:4.13.1")
@@ -34,20 +31,11 @@ dependencies {
 
     /* gRPC Proto file project */
     implementation(project(":grpcInterface"))
-//    implementation("io.github.lognet:grpc-spring-boot-starter:5.1.2"){
-//        exclude("io.grpc", "grpc-netty-shaded")
-//    }
-//    implementation("io.grpc:grpc-protobuf:$grpcVersion")
-//    implementation("io.grpc:grpc-stub:$grpcVersion")
-//    implementation("io.grpc:grpc-services:$grpcVersion")
 
-//    compileOnly("io.grpc:grpc-netty:1.55.1")
-//    compileOnly("org.projectlombok:lombok")
     annotationProcessor("org.projectlombok:lombok")
     developmentOnly("org.springframework.boot:spring-boot-devtools")
     testImplementation("io.grpc:grpc-testing:$grpcVersion")
     testImplementation("org.springframework.boot:spring-boot-starter-test")
-//    testImplementation("org.testcontainers:junit-jupiter:1.15.3")
 }
 
 jacoco {
@@ -62,27 +50,36 @@ tasks.jacocoTestReport {
     classDirectories.setFrom(
             files(classDirectories.files.map {
                 fileTree(it) {
-                    exclude("**/monki/GRPC**", "**/monki/data/**")
+                    exclude(
+                            "**/monki/GRPCS**",
+                            "**/monki/GRPCC**",
+                            "**/monki/data/**"
+                    )
                 }
             })
     )
 
 }
 
-
-
 tasks.jacocoTestCoverageVerification {
     violationRules {
         rule {
-            element = "CLASS"
+            element = "PACKAGE"
 
             limit {
                 counter = "LINE"
                 value = "COVEREDRATIO"
-                minimum = "0.10".toBigDecimal()
+                minimum = "0.80".toBigDecimal()
+            }
+
+            //Instructions
+            limit {
+                counter = "INSTRUCTION"
+                value = "COVEREDRATIO"
+                minimum = "0.80".toBigDecimal()
             }
             excludes = listOf(
-                    "net.monki.GRPC**",
+                    "net.monki",
                     "net.monki.data.**"
             )
         }
@@ -90,11 +87,6 @@ tasks.jacocoTestCoverageVerification {
 }
 
 tasks.withType<Test> {
-//    exclude("net.monki.GRPCServer**")
-//    extensions.configure(JacocoTaskExtension::class) {
-//        isEnabled = true
-//        excludes = listOf("**/GRPCServer**", "**/GRPCConfig**")
-//    }
     useJUnitPlatform() // Note: automatically generated when creating project
     finalizedBy(tasks.jacocoTestReport)
     finalizedBy(tasks.jacocoTestCoverageVerification)
