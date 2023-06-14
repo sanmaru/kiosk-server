@@ -2,7 +2,6 @@ package net.monki.grpc.v1.service;
 
 import io.grpc.internal.testing.StreamRecorder;
 import net.monki.GRPCServer;
-import net.monki.grpc.v1.service.HelloWorldService;
 import net.monki.kiosk.HelloReply;
 import net.monki.kiosk.HelloRequest;
 import org.junit.jupiter.api.BeforeEach;

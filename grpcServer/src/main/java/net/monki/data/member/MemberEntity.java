@@ -2,7 +2,6 @@ package net.monki.data.member;
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
-import jdk.jfr.DataAmount;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
@@ -16,8 +15,8 @@ import lombok.experimental.SuperBuilder;
 public class MemberEntity {
 
     @Id
-    private String userid;
     private String password;
+    private String userid;
     private String email;
 
     @Override
