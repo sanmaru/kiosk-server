@@ -16,7 +16,9 @@ public class HelloWorldService extends SimpleGrpc.SimpleImplBase {
 
     @Override
     public void sayHello(HelloRequest req, StreamObserver<HelloReply> responseObserver) {
-        HelloReply reply = HelloReply.newBuilder().setMessage("Hello " + req.getName()).build();
+        String returnVal = "Hello " + req.getName();
+        log.debug(returnVal);
+        HelloReply reply = HelloReply.newBuilder().setMessage(returnVal).build();
         responseObserver.onNext(reply);
         responseObserver.onCompleted();
     }

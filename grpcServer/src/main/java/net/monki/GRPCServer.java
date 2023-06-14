@@ -11,5 +11,6 @@ public class GRPCServer {
 
     public static void main(String[] args) {
         SpringApplication.run(GRPCServer.class, args);
+        log.info("Start gRPC Server....");
     }
 }
