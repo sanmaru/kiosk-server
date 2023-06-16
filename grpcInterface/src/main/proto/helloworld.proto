@@ -26,7 +26,7 @@ message HelloRequest {
   string name = 1; // 전송할 이름
 }
 
-//응답 data 규약 : 문자열 message을 1로 사용하겠다
+// 응답 data 규약 : 문자열 message을 1로 사용하겠다
 // [Example]{
 //   "message" : "Hello $name",
 // }
