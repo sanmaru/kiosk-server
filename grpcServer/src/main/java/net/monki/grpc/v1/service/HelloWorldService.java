@@ -22,6 +22,7 @@ public class HelloWorldService extends SimpleGrpc.SimpleImplBase {
             public void onNext(HelloRequest value) {
                 responseObserver.onNext(HelloReply.newBuilder().setMessage("First").build());
                 responseObserver.onNext(HelloReply.newBuilder().setMessage("Second").build());
+//                responseObserver.onCompleted();
                 responseObserver.onNext(HelloReply.newBuilder().setMessage("Third").build());
             }
 
