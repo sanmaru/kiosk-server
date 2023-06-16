@@ -30,7 +30,6 @@ message HelloRequest {
 // [Example]{
 //   "message" : "Hello $name"
 // }
-// [Example]{"message": "Hello Client"}
 message HelloReply {
   string message = 1; // "hello [전송된 이름]"
 }
