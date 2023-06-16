@@ -10,6 +10,9 @@ service Simple {
   //SayHello가 오면 HelloReply를 하겠다의 의미
   rpc SayHello (HelloRequest) returns (HelloReply) {
   }
+  rpc SayHelloStream (stream HelloRequest) returns (stream HelloReply){
+  }
+
 }
 
 //요청 data 규약 : 문자열 name을 1로 사용하겠다.

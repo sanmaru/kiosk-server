@@ -43,4 +43,36 @@ public class Sample {
 
         log.info("asyncCall End");
     }
+    public void clientStreamServerStream(){
+        final HelloRequest helloRequest1 = HelloRequest.newBuilder().setName("Client1").build();
+        final HelloRequest helloRequest2 = HelloRequest.newBuilder().setName("Client2").build();
+        final HelloRequest helloRequest3 = HelloRequest.newBuilder().setName("Client3").build();
+
+        StreamObserver<HelloReply> responseObserver = new StreamObserver<HelloReply>(){
+            @Override
+            public void onNext(HelloReply value) {
+                log.info("Client Request asyncCall : {}", value);
+            }
+
+            @Override
+            public void onError(Throwable t) {
+                log.error("asyncCall Error: {}", t);
+            }
+
+            @Override
+            public void onCompleted() {
+                log.info("asyncCall - onCompleted");
+            }
+        };
+
+        StreamObserver<HelloRequest> requestObserver = asyncStub.sayHelloStream(responseObserver);
+        try{
+            requestObserver.onNext(helloRequest1);
+            requestObserver.onNext(helloRequest2);
+            requestObserver.onNext(helloRequest3);
+        }catch(Exception e){
+            e.printStackTrace();
+        }
+        requestObserver.onCompleted();
+    }
 }
