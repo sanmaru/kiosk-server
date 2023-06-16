@@ -5,7 +5,7 @@ plugins {
     id("io.spring.dependency-management")
 }
 
-group = "org.example"
+group = "net.monki"
 version = "1.0-SNAPSHOT"
 val grpcVersion = "1.55.1"
 val lognetStarterVersion = "5.1.2"
