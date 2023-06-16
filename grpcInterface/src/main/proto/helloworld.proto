@@ -5,6 +5,19 @@ option java_package = "net.monki.kiosk";
 option java_outer_classname = "HelloWorldProto";
 
 package net.monki.kiosk;
+
+/*some comment about Simple
+
+ more *BookService* description
+
+ |  a  |  b  |  c  |
+ | --- | --- | --- |
+ | v1  | v2  | v3  |
+
+2nd line of method **description**
+
+some [url](https://google.com) with <b>bold</b>
+ */
 //service규정
 service Simple {
   //SayHello가 오면 HelloReply를 하겠다의 의미
