@@ -23,10 +23,14 @@ service Simple {
 
 //요청 data 규약 : 문자열 name을 1로 사용하겠다.
 message HelloRequest {
-  string name = 1;
+  string name = 1; // 전송할 이름
 }
 
-//응답 data 규약 : 문자열 message을 1로 사용하겠다.
+//응답 data 규약 : 문자열 message을 1로 사용하겠다
+// [Example]{
+//   "message" : "Hello $name",
+// }
+// [Example]{"message": "Hello Client"}
 message HelloReply {
-  string message = 1;
+  string message = 1; // "hello [전송된 이름]"
 }
