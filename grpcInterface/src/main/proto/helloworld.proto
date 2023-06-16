@@ -6,19 +6,12 @@ option java_outer_classname = "HelloWorldProto";
 
 package net.monki.kiosk;
 
-/*some comment about Simple
-
- more *BookService* description
-
- |  a  |  b  |  c  |
- | --- | --- | --- |
- | v1  | v2  | v3  |
-
-2nd line of method **description**
-
-some [url](https://google.com) with <b>bold</b>
- */
-//service규정
+/*
+<b>Example gRPC 서비스 예제</b>
+---
+## Description
+Markdown 과 HTML Tag를 이용한 주석 사용 방법 확인
+*/
 service Simple {
   //SayHello가 오면 HelloReply를 하겠다의 의미
   rpc SayHello (HelloRequest) returns (HelloReply) {
