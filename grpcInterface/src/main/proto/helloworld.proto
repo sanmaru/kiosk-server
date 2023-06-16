@@ -28,7 +28,7 @@ message HelloRequest {
 
 // 응답 data 규약 : 문자열 message을 1로 사용하겠다
 // [Example]{
-//   "message" : "Hello $name",
+//   "message" : "Hello $name"
 // }
 // [Example]{"message": "Hello Client"}
 message HelloReply {
