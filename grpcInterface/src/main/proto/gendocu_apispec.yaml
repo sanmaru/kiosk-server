@@ -1,0 +1,6 @@
+servers:
+  - selector: "*"
+    evns:
+      - name: "gpc"
+        urls:
+          - grpc://localhost:9091
