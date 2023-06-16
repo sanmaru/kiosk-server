@@ -15,6 +15,29 @@ public class HelloWorldService extends SimpleGrpc.SimpleImplBase {
     private final Logger log = LoggerFactory.getLogger((getClass()));
 
     @Override
+    public StreamObserver<HelloRequest> sayHelloStream(StreamObserver<HelloReply> responseObserver) {
+        return new StreamObserver<HelloRequest>(){
+
+            @Override
+            public void onNext(HelloRequest value) {
+                responseObserver.onNext(HelloReply.newBuilder().setMessage("First").build());
+                responseObserver.onNext(HelloReply.newBuilder().setMessage("Second").build());
+                responseObserver.onNext(HelloReply.newBuilder().setMessage("Third").build());
+            }
+
+            @Override
+            public void onError(Throwable t) {
+
+            }
+
+            @Override
+            public void onCompleted() {
+                responseObserver.onCompleted();
+            }
+        };
+    }
+
+    @Override
     public void sayHello(HelloRequest req, StreamObserver<HelloReply> responseObserver) {
         String returnVal = "Hello " + req.getName();
         log.debug(returnVal);
